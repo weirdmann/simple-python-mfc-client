@@ -44,10 +44,9 @@ direction_index = 0
 def setDirection(telegram, arr, index) ->(bytes, int):
     if not arr:
         return (telegram, index)
-    index = (index + 1) % len(arr)
     current_direction = arr[index]
     telegram = telegram[0:16] + current_direction + telegram[20:]
-    return (telegram, index)
+    return (telegram, (index + 1) % len(arr))
 
 current_telegram = b""
 current_telegram_len = 0
